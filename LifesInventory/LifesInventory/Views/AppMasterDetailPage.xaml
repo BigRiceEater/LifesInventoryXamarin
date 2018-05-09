@@ -8,8 +8,12 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <StackLayout Padding="20">
-                <!-- TODO: // Update the Layout and add some real menu items  -->
-                <Button Text="ViewA" Command="{Binding NavigateCommand}" CommandParameter="ViewA" />
+                <Button Text="Inventory" 
+                        Command="{Binding NavigateCommand}" 
+                        CommandParameter="Root/Nav/Inventory/" />
+                <Button Text="Wish List" 
+                        Command="{Binding NavigateCommand}" 
+                        CommandParameter="Root/Nav/WishList/" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

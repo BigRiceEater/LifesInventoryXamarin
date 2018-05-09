@@ -24,16 +24,16 @@ namespace LifesInventory
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("LoginPage/");
+            await NavigationService.NavigateAsync("Login/");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<LoginPage>();
-            containerRegistry.RegisterForNavigation<AppMasterDetailPage>();
-            containerRegistry.RegisterForNavigation<InventoryPage>();
-            containerRegistry.RegisterForNavigation<WishListPage>();
+            containerRegistry.RegisterForNavigation<NavigationPage>("Nav");
+            containerRegistry.RegisterForNavigation<LoginPage>("Login");
+            containerRegistry.RegisterForNavigation<AppMasterDetailPage>("Root");
+            containerRegistry.RegisterForNavigation<InventoryPage>("Inventory");
+            containerRegistry.RegisterForNavigation<WishListPage>("WishList");
         }
     }
 }
