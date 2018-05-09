@@ -10,10 +10,10 @@
             <StackLayout Padding="20">
                 <Button Text="Inventory" 
                         Command="{Binding NavigateCommand}" 
-                        CommandParameter="Root/Nav/Inventory/" />
+                        CommandParameter="Nav/Inventory/" />
                 <Button Text="Wish List" 
                         Command="{Binding NavigateCommand}" 
-                        CommandParameter="Root/Nav/WishList/" />
+                        CommandParameter="Nav/WishList/" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
