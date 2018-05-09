@@ -9,7 +9,7 @@ namespace LifesInventory.ViewModels
 {
 	public class AppMasterDetailPageViewModel : ViewModelBase
 	{
-	    public DelegateCommand<string> NavigateCommand { get; set; }
+	    public DelegateCommand<string> NavigateCommand { get; }
 
         public AppMasterDetailPageViewModel(INavigationService navigationService) 
             : base (navigationService)

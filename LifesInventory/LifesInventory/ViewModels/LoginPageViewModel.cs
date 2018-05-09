@@ -10,7 +10,7 @@ namespace LifesInventory.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
-        public DelegateCommand LoginCommand { get; set; }
+        public DelegateCommand LoginCommand { get; }
 
         public LoginPageViewModel(INavigationService navigationService) 
             : base (navigationService)
