@@ -18,7 +18,7 @@ namespace LifesInventory.ViewModels
             Title = "Login Page";
             LoginCommand = new DelegateCommand(async () =>
             {
-                await NavigationService.NavigateAsync("Root/Nav/Inventory");
+                await NavigationService.NavigateAsync("/Root/Nav/Inventory");
             });
         }
     }
