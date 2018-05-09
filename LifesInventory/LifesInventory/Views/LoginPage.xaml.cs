@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 namespace LifesInventory.Views
 {
-	public partial class MainPage : ContentPage
+	public partial class LoginPage : ContentPage
 	{
-		public MainPage ()
+		public LoginPage ()
 		{
 			InitializeComponent ();
 		}

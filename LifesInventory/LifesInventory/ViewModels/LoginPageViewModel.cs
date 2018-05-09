@@ -8,12 +8,12 @@ using System.Text;
 
 namespace LifesInventory.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class LoginPageViewModel : ViewModelBase
     {
-        public MainPageViewModel(INavigationService navigationService) 
+        public LoginPageViewModel(INavigationService navigationService) 
             : base (navigationService)
         {
-            Title = "Main Page";
+            Title = "Login Page";
         }
     }
 }
