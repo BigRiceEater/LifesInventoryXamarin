@@ -13,7 +13,7 @@ namespace LifesInventory.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
-        // TODO: Create enum for category
+        // TODO: Category should be settable by user. 
         public string Category { get; set; }
     }
 }
