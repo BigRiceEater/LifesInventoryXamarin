@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System.IO;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Prism;
@@ -17,7 +18,16 @@ namespace LifesInventory.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App(new AndroidInitializer()));
+            LoadApplication(new App(new AndroidInitializer(), MainActivity.GetDbLocation()));
+        }
+        private static string GetDbLocation()
+        {
+            string dbName = "lifes_inventory_db.sqlite";
+            string dbFolderPath = 
+                System.Environment.GetFolderPath(
+                    System.Environment.SpecialFolder.Personal);
+            var location = Path.Combine(dbFolderPath, dbName);
+            return location;
         }
     }
 

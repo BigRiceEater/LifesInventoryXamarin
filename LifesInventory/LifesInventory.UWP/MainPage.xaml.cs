@@ -23,7 +23,14 @@ namespace LifesInventory.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new LifesInventory.App(new UwpInitializer()));
+            LoadApplication(new LifesInventory.App(new UwpInitializer(),MainPage.GetDbLocation()));
+        }
+
+        private static string GetDbLocation()
+        {
+            var storage = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+            var dbPath = Path.Combine(storage, "lifes_inventory_db.sqlite");
+            return dbPath;
         }
     }
 
