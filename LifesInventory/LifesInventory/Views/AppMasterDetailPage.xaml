@@ -15,6 +15,9 @@
                 <Button Text="Wish List" 
                         Command="{Binding NavigateCommand}" 
                         CommandParameter="Nav/WishList/" />
+                <Button Text="Settings" 
+                        Command="{Binding NavigateCommand}" 
+                        CommandParameter="Nav/Settings/" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

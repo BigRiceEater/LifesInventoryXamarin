@@ -39,6 +39,7 @@ namespace LifesInventory
             containerRegistry.RegisterForNavigation<AppMasterDetailPage>("Root");
             containerRegistry.RegisterForNavigation<InventoryPage>("Inventory");
             containerRegistry.RegisterForNavigation<WishListPage>("WishList");
+            containerRegistry.RegisterForNavigation<AppSettingsPage>("Settings");
         }
     }
 }
