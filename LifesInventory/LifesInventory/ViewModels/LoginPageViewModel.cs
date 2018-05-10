@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LifesInventory.ViewModels
 {
@@ -16,10 +17,14 @@ namespace LifesInventory.ViewModels
             : base (navigationService)
         {
             Title = "Login Page";
-            LoginCommand = new DelegateCommand(async () =>
+            LoginCommand = new DelegateCommand(executeMethod: async () =>
             {
                 await NavigationService.NavigateAsync("/Root/Nav/Inventory");
-            });
+            },
+            
+            canExecuteMethod: () => true
+            );
+            
         }
     }
 }
