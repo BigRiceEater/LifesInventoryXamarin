@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using LifesInventory.Enums;
 using LifesInventory.Models;
 using Prism.Navigation;
 
@@ -19,8 +20,18 @@ namespace LifesInventory.ViewModels
             Title = "Inventory";
             InventoryItems = new ObservableCollection<InventoryAsset>()
             {
-                new InventoryAsset() {Name = "Iron"},
-                new InventoryAsset() {Name = "Toaster"}
+                new InventoryAsset()
+                {
+                    Name = "Iron",
+                    Price = 10.0f,
+                    Currency = Currency.AmericanDollar
+                },
+                new InventoryAsset()
+                {
+                    Name = "Toaster",
+                    Price = 20.0f,
+                    Currency = Currency.HongKongDollar
+                }
             };
         }
 	}

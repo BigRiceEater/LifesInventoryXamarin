@@ -5,6 +5,14 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="LifesInventory.Views.InventoryPage"
              Title="{Binding Title}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ItemDataLabel" TargetType="Label">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddNewInventoryCommand}"/>
@@ -20,7 +28,16 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Name}"/>
+                            <Label 
+                                Style="{StaticResource ItemDataLabel}"  
+                                Text="{Binding Name}"/>
+                            <Label 
+                                Style="{StaticResource ItemDataLabel}"  
+                                Text="{
+                                    Binding Price, 
+                                    Converter={StaticResource PriceToStringConverter}, 
+                                    ConverterParameter={Binding Currency}
+                                }"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
