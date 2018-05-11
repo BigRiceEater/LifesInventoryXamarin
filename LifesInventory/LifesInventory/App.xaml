@@ -6,6 +6,11 @@
 	<Application.Resources>
 
 		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style x:Key="MainStackLayout" TargetType="StackLayout">
+                <Setter Property="Margin" Value="20"/>
+            </Style>
+        </ResourceDictionary>
 
 	</Application.Resources>
 </prism:PrismApplication>

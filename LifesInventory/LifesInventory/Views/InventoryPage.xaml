@@ -5,11 +5,27 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="LifesInventory.Views.InventoryPage"
              Title="{Binding Title}">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddNewInventoryCommand}"/>
     </ContentPage.ToolbarItems>
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <StackLayout Style="{StaticResource MainStackLayout}">
         <Label Text="Inventory Page" />
+        
+        <ListView 
+            ItemsSource="{Binding InventoryItems}" 
+            ItemSelected="{Binding InventoryItemSelected}">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding InventoryAsset.Name}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>
