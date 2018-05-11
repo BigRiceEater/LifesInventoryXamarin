@@ -12,16 +12,15 @@
 
     <StackLayout Style="{StaticResource MainStackLayout}">
         <Label Text="Inventory Page" />
-        
+
         <ListView 
             ItemsSource="{Binding InventoryItems}" 
-            ItemSelected="{Binding InventoryItemSelected}">
-            
+            SelectedItem="{Binding SelectedInventoryItem}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding InventoryAsset.Name}"/>
+                            <Label Text="{Binding Name}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
