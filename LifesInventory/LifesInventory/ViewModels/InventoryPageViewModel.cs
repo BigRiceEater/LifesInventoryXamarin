@@ -37,6 +37,12 @@ namespace LifesInventory.ViewModels
         public DelegateCommand AddNewInventoryCommand => 
             new DelegateCommand( async () => await _navigation.NavigateAsync("AddInventory") );
 
+        public DelegateCommand SortByNameCommand =>
+            new DelegateCommand(async () => InventoryItems = InventoryItems.OrderBy(_ => _.Name).ToList());
+
+        public DelegateCommand SortByPriceCommand =>
+            new DelegateCommand(async ()=> InventoryItems = InventoryItems.OrderByDescending(_=>_.Price).ToList());
+
         public InventoryPageViewModel(
             INavigationService navigationService,
             IInventoryService inventoryService) 
@@ -51,7 +57,10 @@ namespace LifesInventory.ViewModels
 	    public override async void OnNavigatedTo(NavigationParameters parameters)
 	    {
 	        base.OnNavigatedTo(parameters);
-	        InventoryItems = await _inventory.GetInventoryListAsync("");
+	        var list = await _inventory.GetInventoryListAsync("");
+	        list = list.OrderBy(_ => _.Name).ToList();
+
+	        InventoryItems = list;
 
 	        var total = InventoryItems.Sum(item => item.Price);
             TotalAsset = total.ToString("C0", new CultureInfo("zh-HK"));

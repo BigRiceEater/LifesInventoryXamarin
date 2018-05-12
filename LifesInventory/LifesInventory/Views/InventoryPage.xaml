@@ -31,9 +31,11 @@
             <Label 
                 VerticalTextAlignment="End"
                 FontSize="Medium"
-                Text="{Binding TotalAsset}" />
+                Text="{Binding TotalAsset}" 
+                HorizontalOptions="FillAndExpand"/>
+            <Button Text="Name" Command="{Binding SortByNameCommand}"/>
+            <Button Text="Price" Command="{Binding SortByPriceCommand}"/>
         </StackLayout>
-        
 
         <ListView 
             ItemsSource="{Binding InventoryItems}" 
