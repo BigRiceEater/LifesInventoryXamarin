@@ -6,8 +6,19 @@
              x:Class="LifesInventory.Views.AddInventoryPage"
              Title="{Binding Title}">
   
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label> Add Inventory </Label>
+    <StackLayout Style="{StaticResource MainStackLayout}">
+        <Label> Item Name </Label>
+        <Entry 
+            Placeholder="Item name" 
+            Text="{Binding Name}"/>
+        <Label> Price </Label>
+        <Entry 
+            Keyboard="Numeric" 
+            Placeholder="HKD" 
+            Text="{Binding Price}"/>
+        <Button 
+            Command="{Binding AddToInventoryCommand}" 
+            CommandParameter="{Binding NewItem}" Text="Add to Inventory" />
     </StackLayout>
 
 </ContentPage>
