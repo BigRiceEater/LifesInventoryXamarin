@@ -30,7 +30,7 @@ namespace LifesInventory.ViewModels
         public string TotalAsset
         {
             get { return _totalAsset; }
-            set { SetProperty(ref _totalAsset, $"Total Asset {value}"); }
+            set { SetProperty(ref _totalAsset, value); }
         }
 
 
