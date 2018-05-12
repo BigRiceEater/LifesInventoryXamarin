@@ -6,7 +6,7 @@
              x:Class="LifesInventory.Views.AddInventoryPage"
              Title="{Binding Title}">
   
-    <StackLayout Style="{StaticResource MainStackLayout}">
+    <StackLayout Style="{StaticResource MainStackLayout}" Margin="20">
         <Label> Item Name </Label>
         <Entry 
             Placeholder="Item name" 
