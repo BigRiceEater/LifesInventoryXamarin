@@ -24,7 +24,7 @@
             Command="{Binding AddNewInventoryCommand}"/>
         <ToolbarItem 
             Order="Primary"
-            Text="Del"
+            Text="Delete"
             Command="{Binding DeleteItemCommand}"/>
     </ContentPage.ToolbarItems>
 

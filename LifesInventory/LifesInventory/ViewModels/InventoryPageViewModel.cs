@@ -22,9 +22,9 @@ namespace LifesInventory.ViewModels
 	    private readonly IPageDialogService _dialog;
 	    private readonly IInventoryService _inventory;
 
-	    private List<InventoryAsset> _inventoryItems;
+	    private ObservableCollection<InventoryAsset> _inventoryItems;
 
-	    public List<InventoryAsset> InventoryItems
+	    public ObservableCollection<InventoryAsset> InventoryItems
 	    {
 	        get => _inventoryItems;
 	        set => SetProperty(ref _inventoryItems, value);
@@ -48,16 +48,25 @@ namespace LifesInventory.ViewModels
         public DelegateCommand AddNewInventoryCommand => 
             new DelegateCommand( async () => await _navigation.NavigateAsync("AddInventory") );
 
-        public DelegateCommand SortByNameCommand =>
-            new DelegateCommand(async () => InventoryItems = InventoryItems.OrderBy(_ => _.Name).ToList());
+	    public DelegateCommand SortByNameCommand =>
+	        new DelegateCommand(async () =>
+	        {
+	            var list = InventoryItems.OrderBy(_ => _.Name).ToList();
+	            InventoryItems = new ObservableCollection<InventoryAsset>(list);
+            });
 
-        public DelegateCommand SortByPriceCommand =>
-            new DelegateCommand(async ()=> InventoryItems = InventoryItems.OrderByDescending(_=>_.Price).ToList());
+	    public DelegateCommand SortByPriceCommand =>
+	        new DelegateCommand(async () =>
+	        {
+	            var list = InventoryItems.OrderByDescending(_ => _.Price).ToList();
+                InventoryItems = new ObservableCollection<InventoryAsset>(list);
+	        });
 
 	    public DelegateCommand DeleteItemCommand =>
 	        new DelegateCommand(async () =>
 	        {
-	            await _inventory.AddInventoryItemAsync(SelectedInventoryItem);
+	            await _inventory.RemoveInventoryItemAsync(SelectedInventoryItem);
+	            InventoryItems.Remove(SelectedInventoryItem);
 	            SelectedInventoryItem = null;
 	        }, 
 	            new Func<bool>( () => SelectedInventoryItem != null)
@@ -83,7 +92,7 @@ namespace LifesInventory.ViewModels
 	        var list = await _inventory.GetInventoryListAsync("");
 	        list = list.OrderBy(_ => _.Name).ToList();
 
-	        InventoryItems = list;
+	        InventoryItems = new ObservableCollection<InventoryAsset>( list );
 
 	        var total = InventoryItems.Sum(item => item.Price);
             TotalAsset = total.ToString("C0", new CultureInfo("zh-HK"));
