@@ -16,9 +16,9 @@ namespace LifesInventory.ViewModels
 	    private readonly INavigationService _navigation;
 	    private readonly IInventoryService _inventory;
 
-	    private ObservableCollection<InventoryAsset> _inventoryItems;
+	    private List<InventoryAsset> _inventoryItems;
 
-	    public ObservableCollection<InventoryAsset> InventoryItems
+	    public List<InventoryAsset> InventoryItems
 	    {
 	        get => _inventoryItems;
 	        set => SetProperty(ref _inventoryItems, value);
@@ -41,8 +41,7 @@ namespace LifesInventory.ViewModels
 	    public override async void OnNavigatedTo(NavigationParameters parameters)
 	    {
 	        base.OnNavigatedTo(parameters);
-	        var list = await _inventory.GetInventoryListAsync("");
-	        InventoryItems = new ObservableCollection<InventoryAsset>(list);
+	        InventoryItems = await _inventory.GetInventoryListAsync("");
 	    }
 	}
 }
