@@ -35,8 +35,7 @@
                                 Style="{StaticResource ItemDataLabel}"  
                                 Text="{
                                     Binding Price, 
-                                    Converter={StaticResource PriceToStringConverter}, 
-                                    ConverterParameter={Binding Currency}
+                                    Converter={StaticResource PriceToStringConverter}
                                 }"/>
                         </StackLayout>
                     </ViewCell>
