@@ -90,22 +90,25 @@ namespace LifesInventory.ViewModels
 
 	        if (rows > 0)
 	        {
-	            var choice = await _dialog.DisplayActionSheetAsync(
-	                title: "Success",
-	                cancelButton: null,
-                    destroyButton: null,
-	                otherButtons: new string[] { "Add Another" , "Finish" }
-	            );
+	            Price = "";
+	            Name = "";
 
-	            if (choice == "Add Another")
-	            {
-	                Price = "";
-	                Name = "";
-	            }
-                else if (choice == "Finish")
-	            {
-	                await _navigation.GoBackAsync();
-	            }
+             //   var choice = await _dialog.DisplayActionSheetAsync(
+	            //    title: "Success",
+	            //    cancelButton: null,
+             //       destroyButton: null,
+	            //    otherButtons: new string[] { "Add Another" , "Finish" }
+	            //);
+
+	            //if (choice == "Add Another")
+	            //{
+	            //    Price = "";
+	            //    Name = "";
+	            //}
+             //   else if (choice == "Finish")
+	            //{
+	            //    await _navigation.GoBackAsync();
+	            //}
 	        }
 	        else
 	        {
