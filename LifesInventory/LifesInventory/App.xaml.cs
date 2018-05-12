@@ -40,6 +40,7 @@ namespace LifesInventory
             containerRegistry.RegisterForNavigation<InventoryPage>("Inventory");
             containerRegistry.RegisterForNavigation<WishListPage>("WishList");
             containerRegistry.RegisterForNavigation<AppSettingsPage>("Settings");
+            containerRegistry.RegisterForNavigation<AddInventoryPage>("AddInventory");
         }
     }
 }

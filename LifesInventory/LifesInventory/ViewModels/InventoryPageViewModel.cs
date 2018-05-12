@@ -12,12 +12,20 @@ namespace LifesInventory.ViewModels
 {
 	public class InventoryPageViewModel : ViewModelBase
 	{
+	    private readonly INavigationService _navigation;
 
-	    public ObservableCollection<InventoryAsset> InventoryItems { get; private set; }
+        public ObservableCollection<InventoryAsset> InventoryItems { get; private set; }
+
+        public DelegateCommand AddNewInventoryCommand => 
+            new DelegateCommand( async () => await _navigation.NavigateAsync("AddInventory") );
+
         public InventoryPageViewModel(INavigationService navigationService) 
             : base (navigationService)
         {
             Title = "Inventory";
+
+            _navigation = navigationService;
+
             InventoryItems = new ObservableCollection<InventoryAsset>()
             {
                 new InventoryAsset()
