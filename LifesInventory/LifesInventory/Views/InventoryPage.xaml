@@ -19,6 +19,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Order="Primary"
+            Priority="0"
             Text="Add"
             Icon="ic_action_add_circle.png"
             Command="{Binding AddNewInventoryCommand}"/>
