@@ -10,7 +10,7 @@ namespace LifesInventory.Services
     {
         Task<List<InventoryAsset>> GetInventoryListAsync(string username);
         Task<int> AddInventoryItemAsync(InventoryAsset item);
-        Task RemoveInventoryItemAsync(InventoryAsset item);
+        Task<int> RemoveInventoryItemAsync(InventoryAsset item);
         Task UpdateInventoryItemAsync(InventoryAsset item);
     }
 }

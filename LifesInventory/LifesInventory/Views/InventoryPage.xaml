@@ -22,6 +22,10 @@
             Text="Add"
             Icon="ic_action_add_circle.png"
             Command="{Binding AddNewInventoryCommand}"/>
+        <ToolbarItem 
+            Order="Primary"
+            Text="Del"
+            Command="{Binding DeleteItemCommand}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Style="{StaticResource MainStackLayout}">
@@ -42,7 +46,7 @@
             SelectedItem="{Binding SelectedInventoryItem}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell IsEnabled="False">
+                    <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="0">
                             <Label 
                                 Style="{StaticResource ItemDataLabel}"  

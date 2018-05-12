@@ -35,9 +35,13 @@ namespace LifesInventory.Services
             }
         }
 
-        public Task RemoveInventoryItemAsync(InventoryAsset item)
+        public async Task<int> RemoveInventoryItemAsync(InventoryAsset item)
         {
-            throw new NotImplementedException();
+            using (SQLiteConnection conn = new SQLiteConnection(App.DbLocation))
+            {
+                var rows = conn.Delete(item);
+                return rows;
+            }
         }
 
         public Task UpdateInventoryItemAsync(InventoryAsset item)
