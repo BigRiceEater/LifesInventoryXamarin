@@ -19,7 +19,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Style="{StaticResource MainStackLayout}">
-        <Label Text="Inventory Page" />
+        <Label Text="{Binding TotalAsset}" />
 
         <ListView 
             ItemsSource="{Binding InventoryItems}" 

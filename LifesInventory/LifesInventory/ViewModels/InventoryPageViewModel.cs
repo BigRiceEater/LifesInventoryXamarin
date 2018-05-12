@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using LifesInventory.Enums;
 using LifesInventory.Models;
@@ -24,6 +25,15 @@ namespace LifesInventory.ViewModels
 	        set => SetProperty(ref _inventoryItems, value);
 	    }
 
+        private string _totalAsset;
+
+        public string TotalAsset
+        {
+            get { return _totalAsset; }
+            set { SetProperty(ref _totalAsset, $"Total Asset {value}"); }
+        }
+
+
         public DelegateCommand AddNewInventoryCommand => 
             new DelegateCommand( async () => await _navigation.NavigateAsync("AddInventory") );
 
@@ -42,6 +52,10 @@ namespace LifesInventory.ViewModels
 	    {
 	        base.OnNavigatedTo(parameters);
 	        InventoryItems = await _inventory.GetInventoryListAsync("");
-	    }
+
+	        var total = InventoryItems.Sum(item => item.Price);
+            TotalAsset = total.ToString("C0", new CultureInfo("zh-HK"));
+
+        }
 	}
 }
