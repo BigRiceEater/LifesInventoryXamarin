@@ -78,6 +78,7 @@ namespace LifesInventory.ViewModels
             : base(navigationService)
         {
             Title = "Add Inventory";
+            _navigation = navigationService;
             _dialog = pageDialogService;
             _inventory = inventoryService;
         }
@@ -89,10 +90,22 @@ namespace LifesInventory.ViewModels
 
 	        if (rows > 0)
 	        {
-	            await _dialog.DisplayAlertAsync(
-	                "Success",
-	                "You have successfully inserted an item",
-	                "Thanks");
+	            var choice = await _dialog.DisplayActionSheetAsync(
+	                title: "Success",
+	                cancelButton: null,
+                    destroyButton: null,
+	                otherButtons: new string[] { "Add Another" , "Finish" }
+	            );
+
+	            if (choice == "Add Another")
+	            {
+	                Price = "";
+	                Name = "";
+	            }
+                else if (choice == "Finish")
+	            {
+	                await _navigation.GoBackAsync();
+	            }
 	        }
 	        else
 	        {
