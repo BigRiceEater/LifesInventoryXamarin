@@ -35,12 +35,7 @@ namespace LifesInventory.ViewModels
             }
 	    }
 
-	    private bool _hasCompletedEntry = false;
-	    public bool HasCompletedEntry
-	    {
-	        get => _hasCompletedEntry;
-	        set => SetProperty(ref _hasCompletedEntry, value);
-	    }
+	    public bool HasCompletedEntry { get; set; } = false;
 
 	    private InventoryAsset _newItem;
         public InventoryAsset NewItem
