@@ -26,6 +26,7 @@
 
     <StackLayout Style="{StaticResource MainStackLayout}">
         <StackLayout Orientation="Horizontal" Margin="10">
+            <!-- TODO: crases on UWP when including Image -->
             <Image WidthRequest="40" Source="{ext:ImageResource LifesInventory.Icons.money-bag.png}" />
             <Label 
                 VerticalTextAlignment="End"
