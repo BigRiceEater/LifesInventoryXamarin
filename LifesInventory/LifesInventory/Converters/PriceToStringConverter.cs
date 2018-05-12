@@ -16,11 +16,12 @@ namespace LifesInventory.Converters
             if (isFloat)
             {
                 var price = (float)value;
-                return $"HKD {price:0.##}";
+                var ci = new CultureInfo("zh-HK");
+                return price.ToString("C0", ci);
             }
             else
             {
-                return "HKD N/A";
+                return "N/A";
             }
         }
 
