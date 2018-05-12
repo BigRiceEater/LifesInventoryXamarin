@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using LifesInventory.Enums;
 using LifesInventory.Models;
+using LifesInventory.Services;
 using Prism.Navigation;
 
 namespace LifesInventory.ViewModels
@@ -13,34 +14,35 @@ namespace LifesInventory.ViewModels
 	public class InventoryPageViewModel : ViewModelBase
 	{
 	    private readonly INavigationService _navigation;
+	    private readonly IInventoryService _inventory;
 
-        public ObservableCollection<InventoryAsset> InventoryItems { get; private set; }
+	    private ObservableCollection<InventoryAsset> _inventoryItems;
+
+	    public ObservableCollection<InventoryAsset> InventoryItems
+	    {
+	        get => _inventoryItems;
+	        set => SetProperty(ref _inventoryItems, value);
+	    }
 
         public DelegateCommand AddNewInventoryCommand => 
             new DelegateCommand( async () => await _navigation.NavigateAsync("AddInventory") );
 
-        public InventoryPageViewModel(INavigationService navigationService) 
+        public InventoryPageViewModel(
+            INavigationService navigationService,
+            IInventoryService inventoryService) 
             : base (navigationService)
         {
             Title = "Inventory";
 
             _navigation = navigationService;
-
-            InventoryItems = new ObservableCollection<InventoryAsset>()
-            {
-                new InventoryAsset()
-                {
-                    Name = "Iron",
-                    Price = 10.0f,
-                    Currency = Currency.AmericanDollar
-                },
-                new InventoryAsset()
-                {
-                    Name = "Toaster",
-                    Price = 20.0f,
-                    Currency = Currency.HongKongDollar
-                }
-            };
+            _inventory = inventoryService;
         }
+
+	    public override async void OnNavigatedTo(NavigationParameters parameters)
+	    {
+	        base.OnNavigatedTo(parameters);
+	        var list = await _inventory.GetInventoryListAsync("");
+	        InventoryItems = new ObservableCollection<InventoryAsset>(list);
+	    }
 	}
 }

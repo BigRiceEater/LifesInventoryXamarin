@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using LifesInventory.Models;
+using LifesInventory.Services;
 using Prism.Navigation;
+using Prism.Services;
 using Unity.ObjectBuilder.Policies;
 
 namespace LifesInventory.ViewModels
@@ -66,16 +68,39 @@ namespace LifesInventory.ViewModels
 	            HasCompletedEntry = false;
 	    }
 
-        public AddInventoryPageViewModel(INavigationService navigationService) 
+	    private readonly INavigationService _navigation;
+	    private readonly IPageDialogService _dialog;
+	    private readonly IInventoryService _inventory;
+        public AddInventoryPageViewModel(
+            INavigationService navigationService, 
+            IPageDialogService pageDialogService,
+            IInventoryService inventoryService) 
             : base(navigationService)
         {
             Title = "Add Inventory";
+            _dialog = pageDialogService;
+            _inventory = inventoryService;
         }
 
 
-	    private void AddToInventory(InventoryAsset item)
+	    private async void AddToInventory(InventoryAsset item)
 	    {
+	        var rows = await _inventory.AddInventoryItemAsync(item);
 
+	        if (rows > 0)
+	        {
+	            await _dialog.DisplayAlertAsync(
+	                "Success",
+	                "You have successfully inserted an item",
+	                "Thanks");
+	        }
+	        else
+	        {
+	            await _dialog.DisplayAlertAsync(
+	                "Failure",
+	                "Oops something went wrong",
+	                "Okay");
+	        }
 	    }
 	}
 }

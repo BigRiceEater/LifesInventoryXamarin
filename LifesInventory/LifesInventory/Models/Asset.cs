@@ -8,8 +8,8 @@ namespace LifesInventory.Models
 {
     public abstract class Asset
     {
-        [PrimaryKey]
-        public Guid Id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Owner { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }

@@ -1,4 +1,5 @@
-﻿using Prism;
+﻿using LifesInventory.Services;
+using Prism;
 using Prism.Ioc;
 using LifesInventory.ViewModels;
 using LifesInventory.Views;
@@ -41,6 +42,8 @@ namespace LifesInventory
             containerRegistry.RegisterForNavigation<WishListPage>("WishList");
             containerRegistry.RegisterForNavigation<AppSettingsPage>("Settings");
             containerRegistry.RegisterForNavigation<AddInventoryPage>("AddInventory");
+
+            containerRegistry.Register<IInventoryService, SqlInventoryService>();
         }
     }
 }
