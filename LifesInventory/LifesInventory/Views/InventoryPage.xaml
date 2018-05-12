@@ -35,7 +35,7 @@
             SelectedItem="{Binding SelectedInventoryItem}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell IsEnabled="False">
                         <StackLayout Orientation="Horizontal" Padding="0">
                             <Label 
                                 Style="{StaticResource ItemDataLabel}"  
