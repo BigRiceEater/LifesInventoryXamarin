@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <Style x:Key="ItemDataLabel" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
-                <Setter Property="Margin" Value="0,10"/>
+                <Setter Property="Margin" Value="10"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -21,7 +21,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Style="{StaticResource MainStackLayout}">
-        <StackLayout Orientation="Horizontal" Margin="0,10">
+        <StackLayout Orientation="Horizontal" Margin="10">
             <Image WidthRequest="40" Source="{ext:ImageResource LifesInventory.Icons.money-bag.png}" />
             <Label 
                 VerticalTextAlignment="End"
