@@ -17,7 +17,11 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddNewInventoryCommand}"/>
+        <ToolbarItem 
+            Order="Primary"
+            Text="Add"
+            Icon="ic_action_add_circle.png"
+            Command="{Binding AddNewInventoryCommand}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Style="{StaticResource MainStackLayout}">
