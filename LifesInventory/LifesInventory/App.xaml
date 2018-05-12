@@ -13,6 +13,7 @@
             </Style>
             
             <converters:PriceToStringConverter x:Key="PriceToStringConverter" />
+            <converters:PriceToFloatConverter x:Key="PriceToFloatConverter" />
         </ResourceDictionary>
 
 	</Application.Resources>
